@@ -1,3 +1,5 @@
+![logo](_media/icon.svg)
+
 # My Blogs
 
 > xubenqi的个人MD笔记

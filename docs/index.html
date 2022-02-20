@@ -6,47 +6,63 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"> -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
   <!-- 更新主题 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> 
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> -->
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'xubenqi-notes',  // 文档标题，会显示在侧边栏顶部
+      name: "xubenqi-notes", // 文档标题，会显示在侧边栏顶部
       repo: 'https://github.com/myCharon/xubenqi-notes', // 右上角挂件
-      loadSidebar: true,
-      coverpage: true,
-      loadNavbar: true,
+      el:'#app', // docsify初始化的挂载元素，默认#app,不存在则挂载在body上
+      loadSidebar: true, // 加载自定义的侧边栏，默认加载_sidebar.md，加载别的文件把true改成“xxx.md”
+      subMaxLevel: 6, // 自定义侧边栏后默认不会再生成目录，通过设置生成目录的最大层级开启这个功能
+      maxLevel: 8, // 可配置的最大支持渲染的标题层级
+      coverpage: true, // 启用封面页，默认加载_coverpage.md文件，也可以自定义文件名
+      loadNavbar: true, // 加载自定义的导航栏，默认加载_navbar.md，加载别的文件把true改成“xxx.md”
       search: "auto", // 全局搜索功能
       logo: '/_media/icon.svg', // 网页左边加载图标
       topMargin: 90, // default: 0   让锚点对齐标题栏
+      onlyCover:true, // 首页只显示封面
+      count: { // 字数统计
+        countable: true,
+        fontsize: "0.9em",
+        color: "rgb(90,90,90)",
+        language: "chinese",
+      },
+      externalLinkTarget: '_blank', // default: '_blank' 外部链接的打开方式 默认新页面
+
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <!-- 引入搜索模块 -->
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-  <!-- 引入copy code模块 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- 复制到剪贴板 -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
   <!-- 分页导航 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 表情 -->
+  <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
+  <!-- 字数统计 -->
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!-- 评论系统 -->
+  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '822a79ccdb388dd4ede7',
+      clientSecret: '5214f7a611b426430fd17ca75f2856063bb7bcaf',
+      repo: 'xubenqi-notes',
+      owner: 'myCharon',
+      admin: ['myCharon'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false
+    })
+  </script> 
 </body>
 
-<!-- 增加评论板块 -->
-</html>
-<link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
-<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
-<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script>
-  const gitalk = new Gitalk({
-    clientID: 'Github Application Client ID',
-    clientSecret: 'Github Application Client Secret',
-    repo: 'Github repo',
-    owner: 'Github repo owner',
-    admin: ['Github repo collaborators, only these guys can initialize github issues'],
-    // facebook-like distraction free mode
-    distractionFreeMode: false
-  })
-</script>
